@@ -75,7 +75,7 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
     </style>
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <?php include 'sidebar.php'; ?>
@@ -84,7 +84,7 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
         <main class="flex-1 p-8">
             <header class="flex items-center justify-between mb-8">
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Müşteriler</h1>
+                    <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Müşteriler</h1>
                     <p class="text-slate-500 dark:text-slate-400">Müşteri portföyünüzü buradan yönetin.</p>
                 </div>
                 <button onclick="document.getElementById('addModal').classList.remove('hidden')"
@@ -96,9 +96,9 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
 
             <!-- Client List -->
             <div
-                class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden transition-colors">
+                class="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden transition-colors">
                 <table class="w-full text-left">
-                    <thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                    <thead class="bg-slate-50 dark:bg-zinc-800/50 border-b border-slate-200 dark:border-zinc-800">
                         <tr>
                             <th class="px-6 py-4 text-sm font-semibold text-slate-700 dark:text-slate-300">Müşteri /
                                 Şirket</th>
@@ -109,7 +109,7 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
                                 İşlemler</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                    <tbody class="divide-y divide-slate-100 dark:divide-zinc-800">
                         <?php if (empty($clients)): ?>
                             <tr>
                                 <td colspan="4" class="px-6 py-8 text-center text-slate-500 dark:text-slate-400">Henüz
@@ -117,9 +117,9 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
                             </tr>
                         <?php else: ?>
                             <?php foreach ($clients as $client): ?>
-                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                <tr class="hover:bg-slate-50 dark:hover:bg-zinc-800/50 transition-colors">
                                     <td class="px-6 py-4">
-                                        <div class="font-semibold text-slate-900 dark:text-white">
+                                        <div class="font-semibold text-zinc-900 dark:text-white">
                                             <?php echo htmlspecialchars($client['name'] ?? ''); ?>
                                         </div>
                                         <div class="text-sm text-slate-500 dark:text-slate-400">
@@ -127,7 +127,7 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm text-slate-900 dark:text-slate-300">
+                                        <div class="text-sm text-zinc-900 dark:text-slate-300">
                                             <?php echo htmlspecialchars($client['email'] ?? ''); ?>
                                         </div>
                                         <div class="text-sm text-slate-500 dark:text-slate-400">
@@ -159,11 +159,11 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
 
     <!-- Add Client Modal -->
     <div id="addModal"
-        class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        class="hidden fixed inset-0 bg-zinc-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div
-            class="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transition-colors">
-            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Yeni Müşteri Ekle</h3>
+            class="bg-white dark:bg-zinc-900 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 transition-colors">
+            <div class="p-6 border-b border-slate-100 dark:border-zinc-800 flex items-center justify-between">
+                <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Yeni Müşteri Ekle</h3>
                 <button onclick="document.getElementById('addModal').classList.add('hidden')"
                     class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
                     <i data-lucide="x" class="w-6 h-6"></i>
@@ -176,49 +176,49 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Ad
                             Soyad</label>
                         <input type="text" name="name" required
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">E-posta</label>
                         <input type="email" name="email"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Telefon</label>
                         <input type="text" name="phone"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Şirket</label>
                         <input type="text" name="company"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Adres</label>
                         <textarea name="address" rows="2"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Vergi
                             Dairesi</label>
                         <input type="text" name="tax_office"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Vergi
                             No</label>
                         <input type="text" name="tax_no"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Notlar</label>
                         <textarea name="notes" rows="2"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
                     </div>
                 </div>
                 <div class="pt-4 flex space-x-3">
                     <button type="button" onclick="document.getElementById('addModal').classList.add('hidden')"
-                        class="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">İptal</button>
+                        class="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors">İptal</button>
                     <button type="submit"
                         class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors">Kaydet</button>
                 </div>
@@ -228,11 +228,11 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
 
     <!-- Edit Client Modal -->
     <div id="editModal"
-        class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        class="hidden fixed inset-0 bg-zinc-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div
-            class="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transition-colors">
-            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Müşteriyi Düzenle</h3>
+            class="bg-white dark:bg-zinc-900 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 transition-colors">
+            <div class="p-6 border-b border-slate-100 dark:border-zinc-800 flex items-center justify-between">
+                <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Müşteriyi Düzenle</h3>
                 <button onclick="document.getElementById('editModal').classList.add('hidden')"
                     class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
                     <i data-lucide="x" class="w-6 h-6"></i>
@@ -246,49 +246,49 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Ad
                             Soyad</label>
                         <input type="text" name="name" id="edit_name" required
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">E-posta</label>
                         <input type="email" name="email" id="edit_email"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Telefon</label>
                         <input type="text" name="phone" id="edit_phone"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Şirket</label>
                         <input type="text" name="company" id="edit_company"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Adres</label>
                         <textarea name="address" id="edit_address" rows="2"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Vergi
                             Dairesi</label>
                         <input type="text" name="tax_office" id="edit_tax_office"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Vergi
                             No</label>
                         <input type="text" name="tax_no" id="edit_tax_no"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                     </div>
                     <div class="col-span-2">
                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Notlar</label>
                         <textarea name="notes" id="edit_notes" rows="2"
-                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
+                            class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors"></textarea>
                     </div>
                 </div>
                 <div class="pt-4 flex space-x-3">
                     <button type="button" onclick="document.getElementById('editModal').classList.add('hidden')"
-                        class="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">İptal</button>
+                        class="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors">İptal</button>
                     <button type="submit"
                         class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors">Güncelle</button>
                 </div>

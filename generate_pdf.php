@@ -91,9 +91,9 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                 <div class="text-right">
                     <h2 class="text-5xl font-light text-slate-200 uppercase tracking-[0.2em] mb-6">TEKLİF</h2>
                     <div class="space-y-1">
-                        <p class="text-sm font-bold text-slate-900">Teklif No: <span class="font-normal text-slate-500">#OFF-<?php echo str_pad($data['id'], 5, '0', STR_PAD_LEFT); ?></span></p>
-                        <p class="text-sm font-bold text-slate-900">Tarih: <span class="font-normal text-slate-500"><?php echo date('d.m.Y'); ?></span></p>
-                        <p class="text-sm font-bold text-slate-900">Geçerlilik: <span class="font-normal text-slate-500"><?php echo date('d.m.Y', strtotime('+15 days')); ?></span></p>
+                        <p class="text-sm font-bold text-zinc-900">Teklif No: <span class="font-normal text-slate-500">#OFF-<?php echo str_pad($data['id'], 5, '0', STR_PAD_LEFT); ?></span></p>
+                        <p class="text-sm font-bold text-zinc-900">Tarih: <span class="font-normal text-slate-500"><?php echo date('d.m.Y'); ?></span></p>
+                        <p class="text-sm font-bold text-zinc-900">Geçerlilik: <span class="font-normal text-slate-500"><?php echo date('d.m.Y', strtotime('+15 days')); ?></span></p>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                 <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100">
                     <h3 class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-4">Müşteri Bilgileri</h3>
                     <div class="space-y-2">
-                        <p class="text-xl font-bold text-slate-900"><?php echo htmlspecialchars($data['client_name'] ?? ''); ?></p>
+                        <p class="text-xl font-bold text-zinc-900"><?php echo htmlspecialchars($data['client_name'] ?? ''); ?></p>
                         <p class="text-sm font-medium text-slate-600"><?php echo htmlspecialchars($data['client_company'] ?? ''); ?></p>
                         <p class="text-sm text-slate-500"><?php echo nl2br(htmlspecialchars($data['client_address'] ?? 'Adres belirtilmemiş.')); ?></p>
                         <div class="pt-2 text-xs text-slate-400 space-y-1">
@@ -114,7 +114,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                 </div>
                 <div class="flex flex-col justify-center">
                     <h3 class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-4">Proje Özeti</h3>
-                    <p class="text-2xl font-bold text-slate-900 mb-3"><?php echo htmlspecialchars($data['project_title'] ?? ''); ?></p>
+                    <p class="text-2xl font-bold text-zinc-900 mb-3"><?php echo htmlspecialchars($data['project_title'] ?? ''); ?></p>
                     <p class="text-sm text-slate-500 leading-relaxed">
                         <?php echo nl2br(htmlspecialchars($data['project_desc'] ?? 'Proje detayları aşağıda belirtilmiştir.')); ?>
                     </p>
@@ -125,7 +125,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
             <div class="mb-16">
                 <table class="w-full">
                     <thead>
-                        <tr class="border-b-2 border-slate-900">
+                        <tr class="border-b-2 border-zinc-900">
                             <th class="py-4 text-left text-[10px] font-bold text-slate-400 uppercase tracking-widest">Hizmet Açıklaması</th>
                             <th class="py-4 text-right text-[10px] font-bold text-slate-400 uppercase tracking-widest w-32">Birim Fiyat</th>
                             <th class="py-4 text-right text-[10px] font-bold text-slate-400 uppercase tracking-widest w-24">Adet</th>
@@ -135,12 +135,12 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                     <tbody class="divide-y divide-slate-100">
                         <tr>
                             <td class="py-8">
-                                <p class="font-bold text-slate-900 text-lg"><?php echo htmlspecialchars($data['project_title'] ?? ''); ?></p>
+                                <p class="font-bold text-zinc-900 text-lg"><?php echo htmlspecialchars($data['project_title'] ?? ''); ?></p>
                                 <p class="text-sm text-slate-500 mt-1">Profesyonel hizmet ve danışmanlık bedeli.</p>
                             </td>
                             <td class="py-8 text-right text-slate-600 font-medium">₺<?php echo number_format($data['amount'], 2); ?></td>
                             <td class="py-8 text-right text-slate-600 font-medium">1</td>
-                            <td class="py-8 text-right font-bold text-slate-900 text-lg">₺<?php echo number_format($data['amount'], 2); ?></td>
+                            <td class="py-8 text-right font-bold text-zinc-900 text-lg">₺<?php echo number_format($data['amount'], 2); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -151,14 +151,14 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                 <div class="w-64 space-y-3">
                     <div class="flex justify-between items-center text-slate-500 text-sm">
                         <span>Ara Toplam</span>
-                        <span class="font-semibold text-slate-900">₺<?php echo number_format($data['amount'], 2); ?></span>
+                        <span class="font-semibold text-zinc-900">₺<?php echo number_format($data['amount'], 2); ?></span>
                     </div>
                     <div class="flex justify-between items-center text-slate-500 text-sm">
                         <span>KDV (%0)</span>
-                        <span class="font-semibold text-slate-900">₺0.00</span>
+                        <span class="font-semibold text-zinc-900">₺0.00</span>
                     </div>
-                    <div class="pt-4 border-t-2 border-slate-900 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-widest text-slate-900">Genel Toplam</span>
+                    <div class="pt-4 border-t-2 border-zinc-900 flex justify-between items-center">
+                        <span class="text-xs font-bold uppercase tracking-widest text-zinc-900">Genel Toplam</span>
                         <span class="text-2xl font-black text-indigo-600">₺<?php echo number_format($data['amount'], 2); ?></span>
                     </div>
                 </div>
@@ -176,7 +176,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                 </div>
                 <div class="text-right flex flex-col justify-end">
                     <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Bu belge dijital olarak oluşturulmuştur</p>
-                    <p class="text-xs font-bold text-slate-900"><?php echo htmlspecialchars($settings['company_name'] ?? 'EkinCRM'); ?> Sistemi</p>
+                    <p class="text-xs font-bold text-zinc-900"><?php echo htmlspecialchars($settings['company_name'] ?? 'EkinCRM'); ?> Sistemi</p>
                 </div>
             </div>
         </div>

@@ -54,7 +54,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
     </style>
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <?php include 'sidebar.php'; ?>
@@ -62,7 +62,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
         <!-- Main Content -->
         <main class="flex-1 p-8">
             <header class="mb-8">
-                <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Sistem Ayarları</h1>
+                <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Sistem Ayarları</h1>
                 <p class="text-slate-500 dark:text-slate-400">Şirket bilgilerinizi ve antetli kağıt ayarlarınızı buradan
                     yönetin.</p>
             </header>
@@ -76,7 +76,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
             <?php endif; ?>
 
             <div
-                class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden transition-colors">
+                class="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden transition-colors">
                 <form action="settings.php" method="POST" class="p-8 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="col-span-2">
@@ -85,14 +85,14 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                                 Adı (Antetli Kağıt İçin)</label>
                             <input type="text" name="company_name"
                                 value="<?php echo htmlspecialchars($settings['company_name'] ?? ''); ?>" required
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
                         </div>
 
                         <div class="col-span-2">
                             <label
                                 class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider text-[10px]">Adres</label>
                             <textarea name="address" rows="3"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all"><?php echo htmlspecialchars($settings['address'] ?? ''); ?></textarea>
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all"><?php echo htmlspecialchars($settings['address'] ?? ''); ?></textarea>
                         </div>
 
                         <div>
@@ -100,7 +100,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                                 class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider text-[10px]">Telefon</label>
                             <input type="text" name="phone"
                                 value="<?php echo htmlspecialchars($settings['phone'] ?? ''); ?>"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
                         </div>
 
                         <div>
@@ -108,7 +108,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                                 class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider text-[10px]">E-posta</label>
                             <input type="email" name="email"
                                 value="<?php echo htmlspecialchars($settings['email'] ?? ''); ?>"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
                         </div>
 
                         <div>
@@ -117,7 +117,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                                 Dairesi</label>
                             <input type="text" name="tax_office"
                                 value="<?php echo htmlspecialchars($settings['tax_office'] ?? ''); ?>"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
                         </div>
 
                         <div>
@@ -126,7 +126,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                                 No</label>
                             <input type="text" name="tax_no"
                                 value="<?php echo htmlspecialchars($settings['tax_no'] ?? ''); ?>"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all">
                         </div>
 
                         <div class="col-span-2">
@@ -134,12 +134,12 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
                                 class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider text-[10px]">IBAN</label>
                             <input type="text" name="iban"
                                 value="<?php echo htmlspecialchars($settings['iban'] ?? ''); ?>"
-                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                                 placeholder="TR00 0000 0000 0000 0000 0000 00">
                         </div>
                     </div>
 
-                    <div class="pt-6 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+                    <div class="pt-6 border-t border-slate-100 dark:border-zinc-800 flex justify-end">
                         <button type="submit"
                             class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-200 dark:shadow-indigo-900/20 transition-all flex items-center">
                             <i data-lucide="save" class="w-5 h-5 mr-2"></i>

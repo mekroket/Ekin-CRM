@@ -110,7 +110,7 @@ $payments = $stmt->fetchAll();
                         <i data-lucide="arrow-left" class="w-5 h-5"></i>
                     </a>
                     <div>
-                        <h1 class="text-2xl font-bold text-slate-900">
+                        <h1 class="text-2xl font-bold text-zinc-900">
                             <?php echo htmlspecialchars($project['title'] ?? ''); ?>
                         </h1>
                         <p class="text-slate-500"><?php echo htmlspecialchars($project['client_name'] ?? ''); ?> /
@@ -137,7 +137,7 @@ $payments = $stmt->fetchAll();
                 <div class="lg:col-span-2 space-y-8">
                     <!-- Description -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                        <h3 class="text-lg font-bold text-slate-900 mb-4">Proje Açıklaması</h3>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-4">Proje Açıklaması</h3>
                         <p class="text-slate-600 leading-relaxed">
                             <?php echo nl2br(htmlspecialchars($project['description'] ?? 'Açıklama belirtilmemiş.')); ?>
                         </p>
@@ -146,7 +146,7 @@ $payments = $stmt->fetchAll();
                     <!-- Tasks -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-lg font-bold text-slate-900">Görevler</h3>
+                            <h3 class="text-lg font-bold text-zinc-900">Görevler</h3>
                             <span class="text-sm text-slate-500"><?php echo count($tasks); ?> Görev</span>
                         </div>
                         <div class="space-y-3">
@@ -177,7 +177,7 @@ $payments = $stmt->fetchAll();
                 <div class="space-y-8">
                     <!-- Project Info Card -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                        <h3 class="text-lg font-bold text-slate-900 mb-6">Proje Özeti</h3>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-6">Proje Özeti</h3>
                         <div class="space-y-4">
                             <div class="flex justify-between items-center">
                                 <span class="text-sm text-slate-500">Durum</span>
@@ -188,12 +188,12 @@ $payments = $stmt->fetchAll();
                             <div class="flex justify-between items-center">
                                 <span class="text-sm text-slate-500">Bütçe</span>
                                 <span
-                                    class="text-sm font-bold text-slate-900">₺<?php echo number_format($project['budget'] ?? 0, 2); ?></span>
+                                    class="text-sm font-bold text-zinc-900">₺<?php echo number_format($project['budget'] ?? 0, 2); ?></span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-sm text-slate-500">Teslim Tarihi</span>
                                 <span
-                                    class="text-sm font-medium text-slate-900"><?php echo isset($project['deadline']) ? date('d.m.Y', strtotime($project['deadline'])) : '-'; ?></span>
+                                    class="text-sm font-medium text-zinc-900"><?php echo isset($project['deadline']) ? date('d.m.Y', strtotime($project['deadline'])) : '-'; ?></span>
                             </div>
                             <div class="pt-4 border-t border-slate-100">
                                 <span class="text-xs font-bold text-slate-400 uppercase block mb-3">Müşteri
@@ -215,7 +215,7 @@ $payments = $stmt->fetchAll();
                     <!-- Payments Card -->
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-lg font-bold text-slate-900">Ödemeler</h3>
+                            <h3 class="text-lg font-bold text-zinc-900">Ödemeler</h3>
                             <a href="payments.php" class="text-xs text-indigo-600 hover:underline">Yönet</a>
                         </div>
                         <div class="space-y-4">
@@ -225,7 +225,7 @@ $payments = $stmt->fetchAll();
                                 <?php foreach ($payments as $payment): ?>
                                     <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
                                         <div>
-                                            <p class="text-sm font-bold text-slate-900">
+                                            <p class="text-sm font-bold text-zinc-900">
                                                 ₺<?php echo number_format($payment['amount'] ?? 0, 2); ?></p>
                                             <p class="text-xs text-slate-500">
                                                 <?php echo isset($payment['due_date']) ? date('d.m.Y', strtotime($payment['due_date'])) : '-'; ?>

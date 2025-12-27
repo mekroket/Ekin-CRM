@@ -25,17 +25,17 @@
         }
 
         .dark .glass {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(9, 9, 11, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 
 <body
-    class="bg-slate-50 dark:bg-slate-950 flex items-center justify-center min-h-screen transition-colors duration-300">
+    class="bg-slate-50 dark:bg-zinc-950 flex items-center justify-center min-h-screen transition-colors duration-300">
     <div class="w-full max-w-md p-8">
         <div class="text-center mb-10">
-            <h1 class="text-3xl font-bold text-slate-900 dark:text-white">EkinCRM</h1>
+            <h1 class="text-3xl font-bold text-zinc-900 dark:text-white">EkinCRM</h1>
             <p class="text-slate-500 dark:text-slate-400 mt-2">İşlerinizi yönetmeye hemen başlayın</p>
         </div>
 
@@ -45,21 +45,21 @@
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Kullanıcı
                         Adı</label>
                     <input type="text" name="username" required
-                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                         placeholder="kullaniciadi">
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Şifre</label>
                     <input type="password" name="password" required
-                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                         placeholder="••••••••">
                 </div>
 
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <input type="checkbox"
-                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-slate-700 rounded dark:bg-slate-800">
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-slate-700 rounded dark:bg-zinc-800">
                         <label class="ml-2 block text-sm text-slate-600 dark:text-slate-400">Beni hatırla</label>
                     </div>
                     <a href="#"

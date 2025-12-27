@@ -35,7 +35,7 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
     </style>
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <?php include 'sidebar.php'; ?>
@@ -44,7 +44,7 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
         <main class="flex-1 p-8">
             <header class="flex items-center justify-between mb-8">
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Hoş geldin,
+                    <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Hoş geldin,
                         <?php echo htmlspecialchars($_SESSION['username'] ?? 'Kullanıcı'); ?>!
                     </h1>
                     <p class="text-slate-500 dark:text-slate-400">İşte bugün neler oluyor.</p>
@@ -63,17 +63,17 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
             <!-- Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div
-                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors">
                     <div class="flex items-center justify-between mb-4">
                         <div class="p-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg">
                             <i data-lucide="users" class="w-6 h-6"></i>
                         </div>
                     </div>
                     <h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Toplam Müşteri</h3>
-                    <p class="text-2xl font-bold text-slate-900 dark:text-white"><?php echo $client_count; ?></p>
+                    <p class="text-2xl font-bold text-zinc-900 dark:text-white"><?php echo $client_count; ?></p>
                 </div>
                 <div
-                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors">
                     <div class="flex items-center justify-between mb-4">
                         <div
                             class="p-2 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-lg">
@@ -81,21 +81,21 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                         </div>
                     </div>
                     <h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Aktif Projeler</h3>
-                    <p class="text-2xl font-bold text-slate-900 dark:text-white"><?php echo $active_projects; ?></p>
+                    <p class="text-2xl font-bold text-zinc-900 dark:text-white"><?php echo $active_projects; ?></p>
                 </div>
                 <div
-                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors">
                     <div class="flex items-center justify-between mb-4">
                         <div class="p-2 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-lg">
                             <i data-lucide="trending-up" class="w-6 h-6"></i>
                         </div>
                     </div>
                     <h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Toplam Gelir</h3>
-                    <p class="text-2xl font-bold text-slate-900 dark:text-white">
+                    <p class="text-2xl font-bold text-zinc-900 dark:text-white">
                         ₺<?php echo number_format($total_revenue, 2); ?></p>
                 </div>
                 <div
-                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors">
                     <div class="flex items-center justify-between mb-4">
                         <div
                             class="p-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded-lg">
@@ -103,16 +103,16 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                         </div>
                     </div>
                     <h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Bekleyen İşler</h3>
-                    <p class="text-2xl font-bold text-slate-900 dark:text-white">0</p>
+                    <p class="text-2xl font-bold text-zinc-900 dark:text-white">0</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Recent Projects -->
                 <div
-                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white">Son Projeler</h2>
+                        <h2 class="text-lg font-bold text-zinc-900 dark:text-white">Son Projeler</h2>
                         <a href="projects.php"
                             class="text-sm text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Tümünü
                             Gör</a>
@@ -125,9 +125,9 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                         <?php else: ?>
                             <?php foreach ($recent_projects as $project): ?>
                                 <div
-                                    class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl transition-colors">
+                                    class="flex items-center justify-between p-4 bg-slate-50 dark:bg-zinc-800/50 rounded-xl transition-colors">
                                     <div>
-                                        <h4 class="font-semibold text-slate-900 dark:text-white">
+                                        <h4 class="font-semibold text-zinc-900 dark:text-white">
                                             <?php echo htmlspecialchars($project['title'] ?? ''); ?>
                                         </h4>
                                         <p class="text-sm text-slate-500 dark:text-slate-400">
@@ -146,9 +146,9 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
 
                 <!-- Recent Payments -->
                 <div
-                    class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white">Son Ödemeler</h2>
+                        <h2 class="text-lg font-bold text-zinc-900 dark:text-white">Son Ödemeler</h2>
                         <a href="payments.php"
                             class="text-sm text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Tümünü
                             Gör</a>
@@ -161,9 +161,9 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                         <?php else: ?>
                             <?php foreach ($recent_payments as $payment): ?>
                                 <div
-                                    class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl transition-colors">
+                                    class="flex items-center justify-between p-4 bg-slate-50 dark:bg-zinc-800/50 rounded-xl transition-colors">
                                     <div>
-                                        <h4 class="font-semibold text-slate-900 dark:text-white">
+                                        <h4 class="font-semibold text-zinc-900 dark:text-white">
                                             <?php echo htmlspecialchars($payment['project_title'] ?? ''); ?>
                                         </h4>
                                         <p class="text-sm text-slate-500 dark:text-slate-400">
@@ -171,7 +171,7 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                                         </p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="font-bold text-slate-900 dark:text-white">
+                                        <p class="font-bold text-zinc-900 dark:text-white">
                                             ₺<?php echo number_format($payment['amount'] ?? 0, 2); ?>
                                         </p>
                                         <span

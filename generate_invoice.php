@@ -94,10 +94,10 @@ $total_amount = $subtotal + $tax_amount;
             <div class="text-right">
                 <h2 class="text-4xl font-light text-slate-300 uppercase tracking-widest mb-4">FATURA</h2>
                 <div class="text-sm">
-                    <p class="font-bold text-slate-900">Fatura No: <span
+                    <p class="font-bold text-zinc-900">Fatura No: <span
                             class="font-normal text-slate-600">#INV-<?php echo str_pad($payment['id'], 5, '0', STR_PAD_LEFT); ?></span>
                     </p>
-                    <p class="font-bold text-slate-900">Tarih: <span
+                    <p class="font-bold text-zinc-900">Tarih: <span
                             class="font-normal text-slate-600"><?php echo date('d.m.Y'); ?></span></p>
                 </div>
             </div>
@@ -106,7 +106,7 @@ $total_amount = $subtotal + $tax_amount;
         <div class="grid grid-cols-2 gap-12 mb-12">
             <div>
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Sayın,</h3>
-                <div class="text-slate-900">
+                <div class="text-zinc-900">
                     <p class="font-bold text-lg"><?php echo htmlspecialchars($payment['client_name'] ?? ''); ?></p>
                     <p class="text-sm text-slate-600">
                         <?php echo nl2br(htmlspecialchars($payment['client_address'] ?? 'Adres belirtilmemiş.')); ?></p>
@@ -126,7 +126,7 @@ $total_amount = $subtotal + $tax_amount;
         <!-- Table -->
         <table class="w-full mb-12">
             <thead>
-                <tr class="border-b-2 border-slate-900">
+                <tr class="border-b-2 border-zinc-900">
                     <th class="py-4 text-left text-sm font-bold uppercase tracking-wider">Açıklama</th>
                     <th class="py-4 text-right text-sm font-bold uppercase tracking-wider">Miktar</th>
                     <th class="py-4 text-right text-sm font-bold uppercase tracking-wider">Birim Fiyat</th>
@@ -136,13 +136,13 @@ $total_amount = $subtotal + $tax_amount;
             <tbody class="divide-y divide-slate-100">
                 <tr>
                     <td class="py-6">
-                        <p class="font-bold text-slate-900"><?php echo htmlspecialchars($payment['project_title'] ?? ''); ?>
+                        <p class="font-bold text-zinc-900"><?php echo htmlspecialchars($payment['project_title'] ?? ''); ?>
                         </p>
                         <p class="text-xs text-slate-500">Proje Hizmet Bedeli</p>
                     </td>
                     <td class="py-6 text-right text-slate-600">1</td>
                     <td class="py-6 text-right text-slate-600">₺<?php echo number_format($subtotal, 2); ?></td>
-                    <td class="py-6 text-right font-bold text-slate-900">₺<?php echo number_format($subtotal, 2); ?>
+                    <td class="py-6 text-right font-bold text-zinc-900">₺<?php echo number_format($subtotal, 2); ?>
                     </td>
                 </tr>
             </tbody>
@@ -153,13 +153,13 @@ $total_amount = $subtotal + $tax_amount;
             <div class="w-64 space-y-3">
                 <div class="flex justify-between text-sm">
                     <span class="text-slate-500">Ara Toplam</span>
-                    <span class="font-bold text-slate-900">₺<?php echo number_format($subtotal, 2); ?></span>
+                    <span class="font-bold text-zinc-900">₺<?php echo number_format($subtotal, 2); ?></span>
                 </div>
                 <div class="flex justify-between text-sm">
                     <span class="text-slate-500">KDV (%20)</span>
-                    <span class="font-bold text-slate-900">₺<?php echo number_format($tax_amount, 2); ?></span>
+                    <span class="font-bold text-zinc-900">₺<?php echo number_format($tax_amount, 2); ?></span>
                 </div>
-                <div class="flex justify-between text-xl border-t-2 border-slate-900 pt-3">
+                <div class="flex justify-between text-xl border-t-2 border-zinc-900 pt-3">
                     <span class="font-black uppercase tracking-tighter">GENEL TOPLAM</span>
                     <span class="font-black text-indigo-600">₺<?php echo number_format($total_amount, 2); ?></span>
                 </div>

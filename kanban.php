@@ -53,7 +53,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
     </style>
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <?php include 'sidebar.php'; ?>
@@ -62,14 +62,14 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
         <main class="flex-1 p-8">
             <header class="flex items-center justify-between mb-8">
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Kanban Panosu</h1>
+                    <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Kanban Panosu</h1>
                     <p class="text-slate-500 dark:text-slate-400">
                         <?php echo $project_id ? htmlspecialchars($project['title'] ?? '') . " projesi görevleri" : "Tüm görevler"; ?>
                     </p>
                 </div>
                 <div class="flex space-x-3">
                     <select onchange="window.location.href='kanban.php?project_id='+this.value"
-                        class="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors">
+                        class="px-4 py-2 rounded-xl border border-slate-200 dark:border-zinc-800 focus:ring-2 focus:ring-indigo-500 outline-none bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white transition-colors">
                         <option value="">Tüm Projeler</option>
                         <?php foreach ($projects as $p): ?>
                             <option value="<?php echo $p['id']; ?>" <?php echo $project_id == $p['id'] ? 'selected' : ''; ?>>
@@ -97,7 +97,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                                 <?php echo $status; ?>
                             </h3>
                             <span
-                                class="bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full text-xs font-bold">
+                                class="bg-slate-200 dark:bg-zinc-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full text-xs font-bold">
                                 <?php
                                 echo count(array_filter($tasks, function ($t) use ($status) {
                                     return $t['status'] === $status;
@@ -106,12 +106,12 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                             </span>
                         </div>
                         <div id="column-<?php echo str_replace(' ', '-', $status); ?>" data-status="<?php echo $status; ?>"
-                            class="kanban-column space-y-4 p-2 bg-slate-100/50 dark:bg-slate-900/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 transition-colors">
+                            class="kanban-column space-y-4 p-2 bg-slate-100/50 dark:bg-zinc-900/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-zinc-800 transition-colors">
                             <?php foreach ($tasks as $task): ?>
                                 <?php if ($task['status'] === $status): ?>
                                     <div data-id="<?php echo $task['id']; ?>"
-                                        class="kanban-card bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm cursor-move hover:shadow-md transition-all">
-                                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2">
+                                        class="kanban-card bg-white dark:bg-zinc-900 p-4 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm cursor-move hover:shadow-md transition-all">
+                                        <h4 class="font-semibold text-zinc-900 dark:text-white mb-2">
                                             <?php echo htmlspecialchars($task['title'] ?? ''); ?>
                                         </h4>
                                         <div class="flex items-center justify-between mt-4">
@@ -120,7 +120,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                                             </span>
                                             <div class="flex -space-x-2">
                                                 <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/30 border-2 border-white dark:border-slate-900 flex items-center justify-center text-[10px] text-indigo-600 dark:text-indigo-400 font-bold">
+                                                    class="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/30 border-2 border-white dark:border-zinc-900 flex items-center justify-center text-[10px] text-indigo-600 dark:text-indigo-400 font-bold">
                                                     U</div>
                                             </div>
                                         </div>
@@ -136,11 +136,11 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
 
     <!-- Add Task Modal -->
     <div id="addTaskModal"
-        class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        class="hidden fixed inset-0 bg-zinc-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div
-            class="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transition-colors">
-            <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Yeni Görev Ekle</h3>
+            class="bg-white dark:bg-zinc-900 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 transition-colors">
+            <div class="p-6 border-b border-slate-100 dark:border-zinc-800 flex items-center justify-between">
+                <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Yeni Görev Ekle</h3>
                 <button onclick="document.getElementById('addTaskModal').classList.add('hidden')"
                     class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
                     <i data-lucide="x" class="w-6 h-6"></i>
@@ -151,12 +151,12 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Görev
                         Başlığı</label>
                     <input type="text" name="title" required
-                        class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                        class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Proje</label>
                     <select name="project_id" required
-                        class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                        class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                         <?php foreach ($projects as $p): ?>
                             <option value="<?php echo $p['id']; ?>" <?php echo $project_id == $p['id'] ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($p['title'] ?? ''); ?>
@@ -167,7 +167,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                 <div>
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Durum</label>
                     <select name="status" required
-                        class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
+                        class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
                         <option value="Bekliyor">Bekliyor</option>
                         <option value="Devam Ediyor">Devam Ediyor</option>
                         <option value="Bitti">Bitti</option>
@@ -175,7 +175,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                 </div>
                 <div class="pt-4 flex space-x-3">
                     <button type="button" onclick="document.getElementById('addTaskModal').classList.add('hidden')"
-                        class="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">İptal</button>
+                        class="flex-1 px-4 py-2 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors">İptal</button>
                     <button type="submit"
                         class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors">Kaydet</button>
                 </div>
