@@ -38,7 +38,8 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">    <title>Ödemeler - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <title>Ödemeler - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -76,7 +77,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
 
             <!-- Payment List -->
             <div
-                class="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden transition-colors">
+                class="bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-visible transition-colors">
                 <table class="w-full text-left">
                     <thead class="bg-slate-50 dark:bg-zinc-800/50 border-b border-slate-200 dark:border-zinc-800">
                         <tr>
@@ -138,7 +139,8 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                                                     <a href="?update_status=Fatura Kesildi&id=<?php echo $payment['id']; ?>"
                                                         class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-zinc-800">Fatura
                                                         Kesildi Olarak İşaretle</a>
-                                                    <a href="exports/generate_pdf.php?id=<?php echo $payment['id']; ?>" target="_blank"
+                                                    <a href="exports/generate_pdf.php?id=<?php echo $payment['id']; ?>"
+                                                        target="_blank"
                                                         class="block px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 dark:hover:bg-zinc-800 font-medium">Teklif
                                                         Oluştur (PDF)</a>
                                                     <a href="exports/generate_invoice.php?id=<?php echo $payment['id']; ?>"
