@@ -216,7 +216,19 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
             fetch('processes/add_task_process.php', {
                 method: 'POST',
                 body: formData
-            }).then(() => window.location.reload());
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    alert('Hata: ' + (data.error || 'Bilinmeyen bir hata oluştu.'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Bir hata oluştu. Lütfen konsolu kontrol edin.');
+            });
         });
     </script>
 </body>
