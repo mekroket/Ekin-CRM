@@ -9,13 +9,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $title = $_POST['title'];
-    $description = $_POST['description'];
     $project_id = $_POST['project_id'];
-    $status = 'Bekliyor'; // Varsayılan durum
-    $assigned_to = $_SESSION['user_id']; // Şimdilik görevi ekleyen kişiye ata
+    $status = $_POST['status'];
 
-    $stmt = $pdo->prepare("INSERT INTO tasks (title, description, project_id, status, assigned_to) VALUES (?, ?, ?, ?, ?)");
-    $result = $stmt->execute([$title, $description, $project_id, $status, $assigned_to]);
+    // Şemada 'Bekliyor' yok, 'Yapılacak' var. Eğer 'Bekliyor' gelirse 'Yapılacak' olarak kaydet.
+    if ($status === 'Bekliyor') {
+        $status = 'Yapılacak';
+    }
+
+    // tasks tablosunda description ve assigned_to sütunları yok.
+    // Sadece title, project_id, status ekliyoruz.
+    $stmt = $pdo->prepare("INSERT INTO tasks (title, project_id, status) VALUES (?, ?, ?)");
+    $result = $stmt->execute([$title, $project_id, $status]);
 
     if ($result) {
         echo json_encode(['success' => true]);

@@ -89,7 +89,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
             <!-- Kanban Board -->
             <div class="flex space-x-6 overflow-x-auto pb-4">
                 <?php
-                $statuses = ['Bekliyor', 'Devam Ediyor', 'Bitti'];
+                $statuses = ['Yapılacak', 'Devam Ediyor', 'Bitti'];
                 foreach ($statuses as $status):
                     ?>
                     <div class="flex-shrink-0 w-80">
@@ -169,7 +169,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Durum</label>
                     <select name="status" required
                         class="w-full px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-colors">
-                        <option value="Bekliyor">Bekliyor</option>
+                        <option value="Yapılacak">Yapılacak</option>
                         <option value="Devam Ediyor">Devam Ediyor</option>
                         <option value="Bitti">Bitti</option>
                     </select>
@@ -188,7 +188,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
         lucide.createIcons();
 
         // SortableJS initialization
-        const columns = ['column-Bekliyor', 'column-Devam-Ediyor', 'column-Bitti'];
+        const columns = ['column-Yapılacak', 'column-Devam-Ediyor', 'column-Bitti'];
         columns.forEach(id => {
             const el = document.getElementById(id);
             new Sortable(el, {
