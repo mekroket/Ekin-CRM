@@ -62,3 +62,17 @@ CREATE TABLE IF NOT EXISTS expenses (
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(100) NOT NULL DEFAULT 'EkinCRM',
+    address TEXT,
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    tax_office VARCHAR(100),
+    tax_no VARCHAR(50),
+    iban VARCHAR(50),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT IGNORE INTO settings (id, company_name, address, phone, email) VALUES (1, 'EkinCRM', 'Teknopark İstanbul', '0850 123 45 67', 'info@ekincrm.com');
