@@ -68,7 +68,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl shadow-lg shadow-indigo-200 dark:shadow-indigo-900/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl shadow-lg  dark:shadow-indigo-900/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
                     Giriş Yap
                 </button>
             </form>

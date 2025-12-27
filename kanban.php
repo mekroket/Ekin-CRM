@@ -78,7 +78,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                         <?php endforeach; ?>
                     </select>
                     <button onclick="document.getElementById('addTaskModal').classList.remove('hidden')"
-                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg shadow-indigo-200 transition-all">
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg  transition-all">
                         <i data-lucide="plus" class="w-5 h-5 mr-2"></i>
                         Yeni Görev
                     </button>

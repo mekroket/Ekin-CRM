@@ -141,7 +141,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
 
                     <div class="pt-6 border-t border-slate-100 dark:border-zinc-800 flex justify-end">
                         <button type="submit"
-                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-200 dark:shadow-indigo-900/20 transition-all flex items-center">
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg  dark:shadow-indigo-900/20 transition-all flex items-center">
                             <i data-lucide="save" class="w-5 h-5 mr-2"></i>
                             Ayarları Kaydet
                         </button>

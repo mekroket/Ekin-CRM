@@ -62,7 +62,7 @@ $expenses = $pdo->query("SELECT * FROM expenses ORDER BY expense_date DESC")->fe
                     <p class="text-slate-500 dark:text-slate-400">Gelir, gider ve karlılık durumunuzu takip edin.</p>
                 </div>
                 <button onclick="document.getElementById('addExpenseModal').classList.remove('hidden')"
-                    class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg shadow-red-200 transition-all">
+                    class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg  transition-all">
                     <i data-lucide="minus-circle" class="w-5 h-5 mr-2"></i>
                     Yeni Gider Ekle
                 </button>

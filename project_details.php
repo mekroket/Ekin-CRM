@@ -125,7 +125,7 @@ $payments = $stmt->fetchAll();
                         Kanban'da Gör
                     </a>
                     <button
-                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg shadow-indigo-200 transition-all">
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg  transition-all">
                         <i data-lucide="edit-2" class="w-5 h-5 mr-2"></i>
                         Düzenle
                     </button>

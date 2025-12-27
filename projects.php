@@ -59,7 +59,7 @@ $clients = $pdo->query("SELECT id, name FROM clients ORDER BY name ASC")->fetchA
                     <p class="text-slate-500 dark:text-slate-400">Tüm projelerinizi ve durumlarını buradan izleyin.</p>
                 </div>
                 <button onclick="document.getElementById('addProjectModal').classList.remove('hidden')"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg shadow-indigo-200 transition-all">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center shadow-lg  transition-all">
                     <i data-lucide="plus" class="w-5 h-5 mr-2"></i>
                     Yeni Proje Başlat
                 </button>
