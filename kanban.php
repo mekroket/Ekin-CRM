@@ -31,7 +31,8 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">`n    <title>Kanban - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <title>Kanban - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -212,7 +213,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
             e.preventDefault();
             const formData = new FormData(this);
 
-            fetch('add_task_process.php', {
+            fetch('processes/add_task_process.php', {
                 method: 'POST',
                 body: formData
             }).then(() => window.location.reload());

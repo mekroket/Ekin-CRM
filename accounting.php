@@ -32,7 +32,7 @@ $expenses = $pdo->query("SELECT * FROM expenses ORDER BY expense_date DESC")->fe
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">`n    <title>Muhasebe - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">    <title>Muhasebe - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>

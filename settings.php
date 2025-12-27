@@ -37,7 +37,7 @@ $settings = $pdo->query("SELECT * FROM settings WHERE id = 1")->fetch() ?: [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">`n    <title>Ayarlar - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">    <title>Ayarlar - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
