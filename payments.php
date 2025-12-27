@@ -139,7 +139,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                                                     <a href="?update_status=Fatura Kesildi&id=<?php echo $payment['id']; ?>"
                                                         class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-zinc-800">Fatura
                                                         Kesildi Olarak İşaretle</a>
-                                                    <a href="exports/generate_pdf.php?id=<?php echo $payment['id']; ?>"
+                                                    <a href="exports/prepare_proposal.php?id=<?php echo $payment['id']; ?>"
                                                         target="_blank"
                                                         class="block px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 dark:hover:bg-zinc-800 font-medium">Teklif
                                                         Oluştur (PDF)</a>
