@@ -11,6 +11,29 @@ $client_count = $pdo->query("SELECT COUNT(*) FROM clients")->fetchColumn();
 $project_count = $pdo->query("SELECT COUNT(*) FROM projects")->fetchColumn();
 $active_projects = $pdo->query("SELECT COUNT(*) FROM projects WHERE status != 'Tamamlandı'")->fetchColumn();
 $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = 'Ödeme Alındı'")->fetchColumn() ?: 0;
+
+// Grafik Verileri - Aylık Gelir (Son 6 Ay)
+$monthly_revenue_query = $pdo->query("
+    SELECT DATE_FORMAT(created_at, '%Y-%m') as month, SUM(amount) as total 
+    FROM payments 
+    WHERE status = 'Ödeme Alındı' AND created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH) 
+    GROUP BY month 
+    ORDER BY month ASC
+")->fetchAll(PDO::FETCH_KEY_PAIR);
+
+// Son 6 ayın etiketlerini ve verilerini hazırla (Boş aylar için 0 doldur)
+$revenue_labels = [];
+$revenue_data = [];
+for ($i = 5; $i >= 0; $i--) {
+    $month = date('Y-m', strtotime("-$i months"));
+    $revenue_labels[] = date('F Y', strtotime("-$i months")); // Türkçe ay isimleri için setlocale gerekebilir, şimdilik İngilizce/Varsayılan
+    $revenue_data[] = $monthly_revenue_query[$month] ?? 0;
+}
+
+// Grafik Verileri - Proje Durumları
+$project_status_data = $pdo->query("SELECT status, COUNT(*) as count FROM projects GROUP BY status")->fetchAll(PDO::FETCH_KEY_PAIR);
+$status_labels = array_keys($project_status_data);
+$status_counts = array_values($project_status_data);
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -18,7 +41,8 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">    <title>Dashboard - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <title>Dashboard - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -33,6 +57,7 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
@@ -104,6 +129,24 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                     </div>
                     <h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Bekleyen İşler</h3>
                     <p class="text-2xl font-bold text-zinc-900 dark:text-white">0</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Revenue Chart -->
+                <div
+                    class="lg:col-span-2 bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm">
+                    <h2 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">Aylık Gelir Analizi</h2>
+                    <canvas id="revenueChart" height="300"></canvas>
+                </div>
+                <!-- Project Status Chart -->
+                <div
+                    class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm">
+                    <h2 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">Proje Durumları</h2>
+                    <div class="relative h-64">
+                        <canvas id="statusChart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -190,6 +233,97 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
 
     <script>
         lucide.createIcons();
+
+        // Chart.js Konfigürasyonu
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        const textColor = isDarkMode ? '#94a3b8' : '#64748b';
+        const gridColor = isDarkMode ? '#334155' : '#e2e8f0';
+
+        // Gelir Grafiği
+        const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctxRevenue, {
+            type: 'line',
+            data: {
+                labels: <?php echo json_encode($revenue_labels); ?>,
+                datasets: [{
+                    label: 'Gelir (₺)',
+                    data: <?php echo json_encode($revenue_data); ?>,
+                    borderColor: '#4f46e5', // Indigo-600
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#ffffff',
+                    pointBorderColor: '#4f46e5',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: isDarkMode ? '#18181b' : '#ffffff',
+                        titleColor: isDarkMode ? '#ffffff' : '#0f172a',
+                        bodyColor: isDarkMode ? '#cbd5e1' : '#334155',
+                        borderColor: isDarkMode ? '#27272a' : '#e2e8f0',
+                        borderWidth: 1,
+                        padding: 10,
+                        displayColors: false,
+                        callbacks: {
+                            label: function (context) {
+                                return '₺' + context.parsed.y.toLocaleString('tr-TR', { minimumFractionDigits: 2 });
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: gridColor, borderDash: [5, 5] },
+                        ticks: { color: textColor, callback: function (value) { return '₺' + value; } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: textColor }
+                    }
+                }
+            }
+        });
+
+        // Proje Durum Grafiği
+        const ctxStatus = document.getElementById('statusChart').getContext('2d');
+        new Chart(ctxStatus, {
+            type: 'doughnut',
+            data: {
+                labels: <?php echo json_encode($status_labels); ?>,
+                datasets: [{
+                    data: <?php echo json_encode($status_counts); ?>,
+                    backgroundColor: [
+                        '#4f46e5', // Planlama (Indigo)
+                        '#0ea5e9', // Devam Ediyor (Sky)
+                        '#f59e0b', // Test (Amber)
+                        '#10b981', // Tamamlandı (Emerald)
+                        '#ef4444'  // Diğer (Red)
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: textColor, usePointStyle: true, padding: 20 }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
     </script>
 </body>
 
