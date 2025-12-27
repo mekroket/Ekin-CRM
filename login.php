@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giriş Yap - EkinCRM</title>
-    <script src="theme.js"></script>
+    <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,7 +40,7 @@
         </div>
 
         <div class="glass p-8 rounded-2xl shadow-xl transition-colors">
-            <form action="login_process.php" method="POST" class="space-y-6">
+            <form action="processes/login_process.php" method="POST" class="space-y-6">
                 <div>
                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Kullanıcı
                         Adı</label>

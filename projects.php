@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
-require_once 'db.php';
+require_once 'includes/db.php';
 
 // Proje Ekleme İşlemi
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_project'])) {
@@ -30,7 +30,7 @@ $clients = $pdo->query("SELECT id, name FROM clients ORDER BY name ASC")->fetchA
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeler - EkinCRM</title>
-    <script src="theme.js"></script>
+    <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -49,7 +49,7 @@ $clients = $pdo->query("SELECT id, name FROM clients ORDER BY name ASC")->fetchA
 <body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <?php include 'sidebar.php'; ?>
+        <?php include 'includes/sidebar.php'; ?>
 
         <!-- Main Content -->
         <main class="flex-1 p-8">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db.php';
+require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     } else {
         // Eğer kullanıcı yoksa ve veritabanı boşsa ilk kullanıcıyı oluştur (Test amaçlı)
@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $_SESSION['user_id'] = $pdo->lastInsertId();
             $_SESSION['username'] = 'admin';
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit;
         }
-        header('Location: login.php?error=1');
+        header('Location: ../login.php?error=1');
         exit;
     }
 }

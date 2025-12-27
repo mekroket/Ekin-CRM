@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
-require_once 'db.php';
+require_once 'includes/db.php';
 
 // Ödeme Ekleme İşlemi
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_payment'])) {
@@ -39,7 +39,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ödemeler - EkinCRM</title>
-    <script src="theme.js"></script>
+    <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -58,7 +58,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
 <body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <?php include 'sidebar.php'; ?>
+        <?php include 'includes/sidebar.php'; ?>
 
         <!-- Main Content -->
         <main class="flex-1 p-8">
@@ -138,10 +138,10 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                                                     <a href="?update_status=Fatura Kesildi&id=<?php echo $payment['id']; ?>"
                                                         class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-zinc-800">Fatura
                                                         Kesildi Olarak İşaretle</a>
-                                                    <a href="generate_pdf.php?id=<?php echo $payment['id']; ?>" target="_blank"
+                                                    <a href="exports/generate_pdf.php?id=<?php echo $payment['id']; ?>" target="_blank"
                                                         class="block px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 dark:hover:bg-zinc-800 font-medium">Teklif
                                                         Oluştur (PDF)</a>
-                                                    <a href="generate_invoice.php?id=<?php echo $payment['id']; ?>"
+                                                    <a href="exports/generate_invoice.php?id=<?php echo $payment['id']; ?>"
                                                         target="_blank"
                                                         class="block px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 dark:hover:bg-zinc-800 font-medium">Fatura
                                                         Oluştur</a>

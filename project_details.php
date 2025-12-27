@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
     header('Location: projects.php');
     exit;
 }
-require_once 'db.php';
+require_once 'includes/db.php';
 
 $project_id = $_GET['id'];
 

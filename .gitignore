@@ -1,4 +1,4 @@
-db.php
+includes/db.php
 .DS_Store
 *.log
 .vscode/

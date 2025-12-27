@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['user_id']) || !isset($_GET['id'])) {
     exit('Yetkisiz erişim.');
 }
-require_once 'db.php';
+require_once '../includes/db.php';
 
 $id = $_GET['id'];
 $stmt = $pdo->prepare("SELECT py.*, p.title as project_title, p.description as project_desc, c.name as client_name, c.company as client_company, c.email as client_email, c.phone as client_phone, c.address as client_address 
