@@ -58,7 +58,7 @@ $clients = $pdo->query("SELECT * FROM clients ORDER BY created_at DESC")->fetchA
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Müşteriler - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">`n    <title>Müşteriler - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
