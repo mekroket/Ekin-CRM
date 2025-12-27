@@ -11,6 +11,11 @@ $client_count = $pdo->query("SELECT COUNT(*) FROM clients")->fetchColumn();
 $project_count = $pdo->query("SELECT COUNT(*) FROM projects")->fetchColumn();
 $active_projects = $pdo->query("SELECT COUNT(*) FROM projects WHERE status != 'Tamamlandı'")->fetchColumn();
 $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = 'Ödeme Alındı'")->fetchColumn() ?: 0;
+
+// Grafik Verileri - Proje Durumları
+$project_status_data = $pdo->query("SELECT status, COUNT(*) as count FROM projects GROUP BY status")->fetchAll(PDO::FETCH_KEY_PAIR);
+$status_labels = array_keys($project_status_data);
+$status_counts = array_values($project_status_data);
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -18,7 +23,8 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">    <title>Dashboard - EkinCRM</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <title>Dashboard - EkinCRM</title>
     <script src="assets/js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -33,6 +39,7 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
@@ -104,6 +111,18 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
                     </div>
                     <h3 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Bekleyen İşler</h3>
                     <p class="text-2xl font-bold text-zinc-900 dark:text-white">0</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Project Status Chart -->
+                <div
+                    class="lg:col-span-3 bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm">
+                    <h2 class="text-lg font-bold text-zinc-900 dark:text-white mb-4">Proje Durumları</h2>
+                    <div class="relative h-64">
+                        <canvas id="statusChart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -190,6 +209,42 @@ $total_revenue = $pdo->query("SELECT SUM(amount) FROM payments WHERE status = '�
 
     <script>
         lucide.createIcons();
+
+        // Chart.js Konfigürasyonu
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        const textColor = isDarkMode ? '#94a3b8' : '#64748b';
+        const gridColor = isDarkMode ? '#334155' : '#e2e8f0';
+
+        // Proje Durum Grafiği
+        const ctxStatus = document.getElementById('statusChart').getContext('2d');
+        new Chart(ctxStatus, {
+            type: 'doughnut',
+            data: {
+                labels: <?php echo json_encode($status_labels); ?>,
+                datasets: [{
+                    data: <?php echo json_encode($status_counts); ?>,
+                    backgroundColor: [
+                        '#4f46e5', // Planlama (Indigo)
+                        '#0ea5e9', // Devam Ediyor (Sky)
+                        '#f59e0b', // Test (Amber)
+                        '#10b981', // Tamamlandı (Emerald)
+                        '#ef4444'  // Diğer (Red)
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: textColor, usePointStyle: true, padding: 20 }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
     </script>
 </body>
 
