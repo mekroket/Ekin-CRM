@@ -1,32 +1,43 @@
 <?php
+ini_set('display_errors', 0);
+header('Content-Type: application/json');
+
 session_start();
 require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_id'])) {
         http_response_code(403);
-        exit('Yetkisiz erişim');
+        echo json_encode(['success' => false, 'error' => 'Yetkisiz erişim']);
+        exit;
     }
 
-    $title = $_POST['title'];
-    $project_id = $_POST['project_id'];
-    $status = $_POST['status'];
+    $title = $_POST['title'] ?? '';
+    $project_id = $_POST['project_id'] ?? '';
+    $status = $_POST['status'] ?? 'Yapılacak';
 
-    // Şemada 'Bekliyor' yok, 'Yapılacak' var. Eğer 'Bekliyor' gelirse 'Yapılacak' olarak kaydet.
+    if (empty($title) || empty($project_id)) {
+        echo json_encode(['success' => false, 'error' => 'Eksik bilgi']);
+        exit;
+    }
+
     if ($status === 'Bekliyor') {
         $status = 'Yapılacak';
     }
 
-    // tasks tablosunda description ve assigned_to sütunları yok.
-    // Sadece title, project_id, status ekliyoruz.
-    $stmt = $pdo->prepare("INSERT INTO tasks (title, project_id, status) VALUES (?, ?, ?)");
-    $result = $stmt->execute([$title, $project_id, $status]);
+    try {
+        $stmt = $pdo->prepare("INSERT INTO tasks (title, project_id, status) VALUES (?, ?, ?)");
+        $result = $stmt->execute([$title, $project_id, $status]);
 
-    if ($result) {
-        echo json_encode(['success' => true]);
-    } else {
+        if ($result) {
+            echo json_encode(['success' => true]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'error' => 'Veritabanı hatası']);
+        }
+    } catch (PDOException $e) {
         http_response_code(500);
-        echo json_encode(['success' => false, 'error' => 'Veritabanı hatası']);
+        echo json_encode(['success' => false, 'error' => 'Veritabanı hatası: ' . $e->getMessage()]);
     }
 }
 ?>
