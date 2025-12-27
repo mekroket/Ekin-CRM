@@ -42,7 +42,7 @@ EkinCRM, küçük ve orta ölçekli işletmeler için tasarlanmış, modern aray
 
 | Dashboard | Kanban Panosu | Karanlık Mod |
 |-----------|---------------|--------------|
-| ![Dashboard](https://via.placeholder.com/200x150) | ![Kanban](https://via.placeholder.com/200x150) | ![Dark Mode](https://via.placeholder.com/200x150) |
+| ![Dashboard](https://github.com/mekroket/Ekin-CRM/blob/main/4.png) | ![Kanban](https://via.placeholder.com/200x150) | ![Dark Mode](https://via.placeholder.com/200x150) |
 
 ## 📄 Lisans
 
