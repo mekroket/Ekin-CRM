@@ -2,7 +2,7 @@
 
 EkinCRM, küçük ve orta ölçekli işletmeler için tasarlanmış, modern arayüzlü ve kullanıcı dostu bir CRM (Müşteri İlişkileri Yönetimi) sistemidir. Projelerinizi, müşterilerinizi ve finansal süreçlerinizi tek bir merkezden yönetmenize olanak tanır.
 
-![EkinCRM Dashboard](https://via.placeholder.com/800x450?text=EkinCRM+Dashboard) <!-- Buraya gerçek bir ekran görüntüsü eklenebilir -->
+![EkinCRM Dashboard](https://github.com/mekroket/Ekin-CRM/blob/main/4.png) <!-- Buraya gerçek bir ekran görüntüsü eklenebilir -->
 
 ## 🚀 Özellikler
 
