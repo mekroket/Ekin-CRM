@@ -199,7 +199,7 @@ $projects = $pdo->query("SELECT id, title FROM projects ORDER BY title ASC")->fe
                     const newStatus = evt.to.getAttribute('data-status');
 
                     // AJAX call to update status
-                    fetch('update_task_status.php', {
+                    fetch('processes/update_task_status.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: `id=${taskId}&status=${newStatus}`
